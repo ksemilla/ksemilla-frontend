@@ -3,57 +3,33 @@
 </script>
 
 <script>
-	import Counter from '$lib/Counter.svelte';
+  import Terminal from "$lib/terminal/index.svelte"
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>ksemilla</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+<section class="text-center pt-48">
+  <h1 class="font-base text-3xl md:text-5xl">Kevin Semilla</h1>
+  <h2 class="text-xl md:text-2xl">Software Engineer</h2>
+  <div>
+    <a href="/experience">experience</a> - <a href="/skills">skills</a> - <a href="/projects">projects</a>
+  </div>
 </section>
 
+<!-- <Terminal /> -->
+
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
+  h2 {
+    color: #635551;
+  }
 
-	h1 {
-		width: 100%;
-	}
+  a {
+    color: #06989A;
+  }
 
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+  a:hover {
+    text-decoration: underline;
+  }
 </style>

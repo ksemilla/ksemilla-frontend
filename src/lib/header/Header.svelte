@@ -1,35 +1,29 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+  import IoIosMenu from 'svelte-icons/io/IoIosMenu.svelte'
+  import { clickOutside } from "$lib/clickOutside"
+  import Dropdown from "./Dropdown.svelte"
+  import UkraineFlag from "./ukrainef.svelte"
+  
+
+  let show = false
+
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
+	<div>
+		<a href="/" class="logo">
+			<svelte:component this={UkraineFlag} />
 		</a>
 	</div>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.url.pathname === '/about'}>
-				<a sveltekit:prefetch href="/about">About</a>
-			</li>
-			<li class:active={$page.url.pathname === '/todos'}>
-				<a sveltekit:prefetch href="/todos">Todos</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
 
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
+	<div>
+		<div class="menu-button" on:click={()=>{show = !show}} use:clickOutside on:click_outside={()=>{show = false}}>
+      <IoIosMenu />
+      {#if show}
+        <Dropdown />
+      {/if}
+    </div>
 	</div>
 </header>
 
@@ -37,88 +31,31 @@
 	header {
 		display: flex;
 		justify-content: space-between;
+    align-items: center;
+    background-color: #2c2c2c;
+    color: #f7f5e8;
+    height: 50px;
+    padding: 15px;
 	}
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+  .logo {
+    color: #f7f5e8;
+  }
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
+  .menu-button {
+    height: 1.7rem;
+    width: 1.7rem;
+    position: relative;
+    border: 1px solid rgb(29, 29, 29);
+    border-radius: 3px;
+    background: #484848;
+    padding: 2px 4px;
+    color: #f7f5e8;
+    cursor: pointer;
+  }
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
+  .menu-button:hover {
+    background-color: #6b6161;
+  }
 
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li.active::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--accent-color);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 1em;
-		color: var(--heading-color);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--accent-color);
-	}
 </style>
