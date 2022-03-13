@@ -52,6 +52,8 @@
     padding: 2px 4px;
     color: #f7f5e8;
     cursor: pointer;
+    display: flex;
+    align-items: items-center;
   }
 
   .menu-button:hover {

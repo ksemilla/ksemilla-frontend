@@ -1,8 +1,6 @@
 <script>
-  import { mutation } from '@urql/svelte';
-  import { goto } from "$app/navigation"
-
-  export let initialData;
+  export let initialData = {};
+  export let handleSubmit;
   let data = {}
 
   $: {
@@ -12,38 +10,13 @@
     
   }
 
-  const mutateInvoice = mutation({
-    query: `
-    mutation createInvoice($DateCreated: String!, $From: String!, $Address: String!, $Amount: Float!) {
-      createInvoice(input: {DateCreated: $DateCreated, From: $From, Address: $Address, Amount: $Amount }) {
-        id
-        DateCreated
-        From
-        Address
-        Amount
-      }
-    }
-    `
-  })
-
-  const handleSubmit = () => {
-    mutateInvoice({ ...data })
-    .then(res=>{
-      if (res.data) {
-        console.log(res.data)
-        goto(`/invoices/${res.data.createInvoice.id}`)
-      } else {
-        console.log(res.error)
-      }
-    })
-    .catch(res=>{
-      console.log("[ERROR]", res)
-    })
+  const onSubmit = () => {
+    handleSubmit({...data})
   }
 
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="grid grid-cols-1 gap-y-4">
+<form on:submit|preventDefault={onSubmit} class="grid grid-cols-1 gap-y-4">
   <div>
     <label for="from">Client</label>
     <input

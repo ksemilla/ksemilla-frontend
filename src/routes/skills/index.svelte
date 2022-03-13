@@ -72,51 +72,12 @@
 
 <main class="max-w-5xl m-auto p-8">
   <h1 class="text-3xl font-medium text-blue-500 mb-4 text-center font-semibold">Skills</h1>
-  <ul class="stack-list">
+  <ul class="grid grid-cols-12 gap-x-4 gap-y-8">
     {#each stack as s}
-    <li class="flex flex-col items-center gap-y-2">
+    <li class="col-span-4 sm:col-span-3 md:col-span-2 flex flex-col items-center gap-y-2 text-center">
       <svelte:component this={s.Component} />
-      <p class="label">{s.label}</p>
+      <p class="text-sm">{s.label}</p>
     </li>
     {/each}
   </ul>
 </main>
-
-<style>
-  ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    column-gap: 40px;
-  }
-
-  .label {
-    font-weight: 500;
-  }
-
-  .stack-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 40px;
-    margin: auto;
-    max-width: 1000px;
-  }
-
-  @media (max-width: 1200px) {
-    .stack-list {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .stack-list {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-
-  @media (max-width: 650px) {
-    .stack-list {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>

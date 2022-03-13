@@ -1,3 +1,7 @@
+<script context="module">
+  export const prerender = true;
+</script>
+
 <script>
   const experiences = [
     {
@@ -35,40 +39,14 @@
 
 <main class="max-w-5xl m-auto p-8">
   <h1 class="text-3xl font-medium text-blue-600 mb-4 text-center font-semibold">Experience</h1>
-  <div class="container">
+  <div class="grid grid-cols-1 divide-y divide-ubuntu-gray space-y-6">
     {#each experiences as experience}
-      <div class="item">
-        <h2 class="text-2xl font-medium mb-2">{experience.company} / <span class="title">{experience.title}</span></h2>
+      <div class="pt-4">
+        <h2 class="text-2xl font-medium text-custom">{experience.company}</h2>
+        <h2 class="text-ubuntu-gold text-xl mb-2">{experience.title}</h2>
         <h4 class="mb-4 font-bold">{experience.duration}</h4>
-        <p class="notes">{experience.notes}</p>
+        <p class="whitespace-pre-wrap">{experience.notes}</p>
       </div>
     {/each}
   </div>
 </main>
-
-<style>
-  main {
-    text-align: left;
-    max-width: 800px;
-    margin: auto;
-  }
-
-  .title {
-    color: rgb(141, 92, 0);
-  }
-
-  .notes {
-    white-space: pre-wrap;
-  }
-
-  .item {
-    border-bottom: 1px solid rgb(128, 115, 1);
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-  }
-
-  .item:last-child {
-    border-bottom: none;
-  }
-
-</style>

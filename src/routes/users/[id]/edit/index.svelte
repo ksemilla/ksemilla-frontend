@@ -5,42 +5,38 @@
   import { goto } from "$app/navigation"
   import Form from "../../_components/Form.svelte"
 
-  const invoice_data = operationStore(`
+  const user_data = operationStore(`
     query singleInvoice($id: String!) {
-      getInvoice(id: $id) {
+      getUser(id: $id) {
         id
-        From
-        DateCreated
-        Address
-        Amount
+        email
+        role
       }
     }`,
     { id: $page.params.id },
     { requestPolicy: 'network-only' }
   );
 
-  query(invoice_data)
+  query(user_data)
 
-  const mutateInvoice = mutation({
+  const mutateUser = mutation({
     query: `
-    mutation updateInvoice($id: String!, $DateCreated: String!, $From: String!, $Address: String!, $Amount: Float!) {
-      updateInvoice(input: {id: $id, DateCreated: $DateCreated, From: $From, Address: $Address, Amount: $Amount }) {
+    mutation updateUser($id: String!, $role: String!, $email: String!) {
+      updateUser(input: {id: $id, email: $email, role: $role }) {
         id
-        DateCreated
-        From
-        Address
-        Amount
+        email
+        role
       }
     }
     `
   })
   
   const handleSubmit = data => {
-    mutateInvoice({ ...data })
+    mutateUser({ ...data })
     .then(res=>{
       if (res.data) {
         console.log(res.data)
-        goto(`/invoices/${res.data.updateInvoice.id}`)
+        goto(`/users/${res.data.updateUser.id}`)
       } else {
         console.log(res.error)
       }
@@ -56,14 +52,14 @@
 <div class="container">
   <div class="header">
     <h3>Edit invoice {$page.params.id}</h3>
-    <a href="/invoices">Cancel</a>
+    <a href="/users">Cancel</a>
   </div>
-  {#if $invoice_data.fetching}
+  {#if $user_data.fetching}
     <p>Loading...</p>
-  {:else if $invoice_data.error}
-    <p>Oh no... {$invoice_data.error.message}</p>
+  {:else if $user_data.error}
+    <p>Oh no... {$user_data.error.message}</p>
   {:else}
-    <Form initialData={$invoice_data.data.getInvoice} handleSubmit={handleSubmit} />
+    <Form initialData={$user_data.data.getUser} handleSubmit={handleSubmit} />
   {/if}
 </div>
 

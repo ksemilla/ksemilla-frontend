@@ -28,6 +28,7 @@
   {/each}
   {#if $isLogged}
     <a href="/invoices" class="item">Invoices</a>
+    <a href="/users" class="item">Users</a>
     <hr />
     <div class="item" on:click={()=>onLogout()}>Logout</div>
   {/if}

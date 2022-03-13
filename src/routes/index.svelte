@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>ksemilla</title>
+	<title>Keb's personal website</title>
 </svelte:head>
 
 <section class="text-center pt-48">

@@ -1,35 +1,6 @@
-<main class="max-w-5xl m-auto p-8">
-  <h1 class="text-3xl font-medium text-blue-600 mb-4 text-center font-semibold">Projects</h1>
-  <div class="container">
-    {#each projects as project}
-      <div class="item pb-4 mb-6">
-        <h2 class="text-2xl font-medium mb-2">{project.title}</h2>
-        <p class="notes">{project.description}</p>
-        <h4 class="duration mt-2">
-          <span class="font-semibold">Stack:</span> {project.stackList.join(", ")}
-        </h4>
-        
-      </div>
-    {/each}
-  </div>
-</main>
-
-<style>
-  main {
-    text-align: left;
-    max-width: 800px;
-    margin: auto;
-  }
-
-  .item {
-    border-bottom: 1px solid rgb(128, 115, 1);
-  }
-
-  .item:last-child {
-    border-bottom: none;
-  }
-
-</style>
+<script context="module">
+  export const prerender = true;
+</script>
 
 <script>
   const projects = [
@@ -62,3 +33,19 @@
     }
   ]
 </script>
+
+<main class="max-w-5xl m-auto p-8">
+  <h1 class="text-3xl font-medium text-blue-600 mb-4 text-center font-semibold">Projects</h1>
+  <div class="divide-y space-y-8 divide-ubuntu-gold">
+    {#each projects as project}
+      <div class="pt-4">
+        <h2 class="text-2xl font-medium mb-2">{project.title}</h2>
+        <p class="notes">{project.description}</p>
+        <h4 class="duration mt-2">
+          <span class="font-semibold">Stack:</span> {project.stackList.join(", ")}
+        </h4>
+        
+      </div>
+    {/each}
+  </div>
+</main>

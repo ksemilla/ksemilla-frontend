@@ -3,25 +3,23 @@
   import { goto } from "$app/navigation"
   import Form from "../_components/Form.svelte"
 
-  const mutateInvoice = mutation({
+  const mutateUser = mutation({
     query: `
-    mutation createInvoice($DateCreated: String!, $From: String!, $Address: String!, $Amount: Float!) {
-      createInvoice(input: {DateCreated: $DateCreated, From: $From, Address: $Address, Amount: $Amount }) {
+    mutation createUser($Email: String!, $Role: String!) {
+      createUser(input: {Email: $Email, role: $Role }) {
         id
-        DateCreated
-        From
-        Address
-        Amount
+        email
+        role
       }
     }
     `
   })
 
   const handleSubmit = (data) => {
-    mutateInvoice({ ...data })
+    mutateUser({ ...data })
     .then(res=>{
       if (res.data) {
-        goto(`/invoices/${res.data.createInvoice.id}`)
+        goto(`/users/${res.data.createUser.id}`)
       } else {
         console.log(res.error)
       }
@@ -35,8 +33,8 @@
 
 <div class="max-w-md m-auto my-8">
   <div class="flex justify-between items-end mb-4">
-    <h1 class="text-3xl text-center">Add Invoice</h1>
-    <a href="/invoices">
+    <h1 class="text-3xl text-center">Add User</h1>
+    <a href="/users">
       Cancel
     </a>
   </div>

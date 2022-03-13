@@ -69,6 +69,13 @@ input {
     width: 100%;
 }
 
+select {
+    color: black;
+    background-color: white;
+    padding: 5px;
+    width: 100%;
+}
+
 label {
     display: block;
 }
