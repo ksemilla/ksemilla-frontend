@@ -1,5 +1,6 @@
 <script>
   import { operationStore, query } from '@urql/svelte';
+  import { mutation } from '@urql/svelte';
   import { user } from "$lib/stores/auth"
   import { page } from "$app/stores"
   import Modal from "$lib/modal/index.svelte"
@@ -22,6 +23,29 @@
   );
 
   query(user_data)
+
+  const mutateUser = mutation({
+    query: `
+    mutation deleteUser($id: String!) {
+      deleteUser(id: $id)
+    }
+    `
+  })
+
+  const onDelete = () => {
+    mutateUser({id: $page.params.id})
+    .then(res=>{
+      if (res.data) {
+        console.log(res.data)
+        // goto(`/users/${res.data.updateUser.id}`)
+      } else {
+        console.log(res.error)
+      }
+    })
+    .catch(res=>{
+      console.log("[ERROR]", res)
+    })
+  }
 
 </script>
 
@@ -70,7 +94,10 @@
       <p class="mt-2">Are you sure you want to delete this user?</p>
       <div class="text-right mt-4">
         <button class="bg-white border text-gray-500 hover:bg-gray-500 hover:text-white" on:click={()=>setShow(false)}>Cancel</button>
-        <button class="bg-red-700 text-white hover:bg-red-600">Delete</button>
+        <button
+          class="bg-red-700 text-white hover:bg-red-600"
+          on:click|preventDefault={onDelete}
+        >Delete</button>
       </div>
     </div>
   </div>

@@ -16,7 +16,6 @@
   })
 
   const handleSubmit = (data) => {
-    console.log(data)
     mutateUser({ ...data })
     .then(res=>{
       if (res.data) {
