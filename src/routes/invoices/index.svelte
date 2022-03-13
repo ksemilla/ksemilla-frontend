@@ -64,6 +64,7 @@
   {:else if $invoices_data.error}
     <p style="color: red">{$invoices_data.error.message}</p>
   {:else}
+  {JSON.stringify(invoices_data)}
     <div class="rounded-md overflow-hidden">
       {#each invoices as invoice (invoice.id)}
         <InvoiceInline invoice={invoice}/>
