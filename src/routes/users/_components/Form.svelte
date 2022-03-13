@@ -5,7 +5,6 @@
 
   $: {
     if (initialData) {
-      console.log(initialData)
       data = initialData
     }
     
