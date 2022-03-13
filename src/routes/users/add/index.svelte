@@ -5,8 +5,8 @@
 
   const mutateUser = mutation({
     query: `
-    mutation createUser($Email: String!, $Role: String!) {
-      createUser(input: {Email: $Email, role: $Role }) {
+    mutation createUser($email: String!, $role: String!) {
+      createUser(input: {email: $email, role: $role }) {
         id
         email
         role
@@ -16,6 +16,7 @@
   })
 
   const handleSubmit = (data) => {
+    console.log(data)
     mutateUser({ ...data })
     .then(res=>{
       if (res.data) {
