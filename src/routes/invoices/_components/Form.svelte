@@ -6,7 +6,10 @@
   let data = {}
 
   $: {
-    data = initialData
+    if (initialData) {
+      data = initialData
+    }
+    
   }
 
   const mutateInvoice = mutation({
@@ -51,7 +54,7 @@
       required
     />
   </div>
-  <div class="">
+  <div>
     <label for="address">Address</label>
     <input
       type="text"
