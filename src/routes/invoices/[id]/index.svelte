@@ -1,8 +1,11 @@
 <script>
-  import { operationStore, query } from '@urql/svelte';
+  import { mutation, operationStore, query } from '@urql/svelte';
   import { user } from "$lib/stores/auth"
   import { page } from "$app/stores"
+  import dayjs from "dayjs"
   import Modal from "$lib/modal/index.svelte"
+  import { OWNER } from "$lib/config/const"
+import { goto } from '$app/navigation';
 
   let show = false
   const setShow = val => {
@@ -13,10 +16,10 @@
     query singleInvoice($id: String!) {
       getInvoice(id: $id) {
         id
-        From
-        DateCreated
-        Address
-        Amount
+        from
+        dateCreated
+        address
+        amount
       }
     }`,
     { id: $page.params.id },
@@ -25,6 +28,29 @@
 
   query(invoice_data)
 
+  const deteleInvoice = mutation({
+    query: `
+    mutation deleteInvoice($id: String!) {
+      deleteInvoice(id: $id)
+    } 
+  `
+  })
+
+  const onDelete = () => {
+    setShow(false)
+    deteleInvoice({id: $page.params.id})
+    .then(res=>{
+      if (res.data) {
+        goto("/invoices")
+      } else {
+        console.log(res.error)
+      }
+    })
+    .catch(res=>{
+      console.log("[ERROR]", res)
+    })
+  }
+
 </script>
 
 <div class="max-w-xl m-auto mt-8">
@@ -32,7 +58,7 @@
     <a href={`/invoices`}>
       <h1 class="text-blue-500 text-3xl">Invoices</h1>
     </a>
-    {#if $user.role === "owner"}
+    {#if $user.role === OWNER}
       <div class="flex gap-x-4">
         <a href={`/invoices/${$page.params.id}/edit`}>Edit</a>
         <div class="cursor-pointer hover:text-red-500" on:click={()=>{
@@ -52,10 +78,10 @@
       <div>
         <div class="data-container">
           <!-- <div>Object ID: {$invoice_data.data.getInvoice.id}</div> -->
-          <div>Date: {$invoice_data.data.getInvoice.DateCreated}</div>
-          <div>From: {$invoice_data.data.getInvoice.From}</div>
-          <div>Address: {$invoice_data.data.getInvoice.Address}</div>
-          <div>Amount: &#8369; {$invoice_data.data.getInvoice.Amount}</div>
+          <div>Date: {dayjs($invoice_data.data.getInvoice.dateCreated).format("MMM DD, YYYY")}</div>
+          <div>From: {$invoice_data.data.getInvoice.from}</div>
+          <div>Address: {$invoice_data.data.getInvoice.address}</div>
+          <div>Amount: &#8369; {$invoice_data.data.getInvoice.amount}</div>
         </div>
       </div>
     </div>
@@ -73,7 +99,7 @@
       <p class="mt-2">Are you sure you want to delete this invoice?</p>
       <div class="text-right mt-4">
         <button class="bg-white border text-gray-500 hover:bg-gray-500 hover:text-white" on:click={()=>setShow(false)}>Cancel</button>
-        <button class="bg-red-700 text-white hover:bg-red-600">Delete</button>
+        <button class="bg-red-700 text-white hover:bg-red-600" on:click|preventDefault={onDelete}>Delete</button>
       </div>
     </div>
   </div>

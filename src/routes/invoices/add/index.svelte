@@ -5,13 +5,13 @@
 
   const mutateInvoice = mutation({
     query: `
-    mutation createInvoice($DateCreated: String!, $From: String!, $Address: String!, $Amount: Float!) {
-      createInvoice(input: {DateCreated: $DateCreated, From: $From, Address: $Address, Amount: $Amount }) {
+    mutation createInvoice($dateCreated: Int!, $from: String!, $address: String!, $amount: Float!) {
+      createInvoice(input: {dateCreated: $dateCreated, from: $from, address: $address, amount: $amount }) {
         id
-        DateCreated
-        From
-        Address
-        Amount
+        dateCreated
+        from
+        address
+        amount
       }
     }
     `

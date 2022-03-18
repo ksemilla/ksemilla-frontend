@@ -18,7 +18,6 @@
     mutatePassword({...data, id: $page.params.id})
     .then(res=>{
       if (res.data) {
-        console.log(res.data)
         goto(`/users/${$page.params.id}`)
       } else {
         console.log(res.error)

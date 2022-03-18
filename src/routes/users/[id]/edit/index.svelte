@@ -7,7 +7,7 @@
 
   const user_data = operationStore(`
     query singleInvoice($id: String!) {
-      getUser(id: $id) {
+      fetchUser(id: $id) {
         id
         email
         role
@@ -59,7 +59,7 @@
   {:else if $user_data.error}
     <p>Oh no... {$user_data.error.message}</p>
   {:else}
-    <Form initialData={$user_data.data.getUser} handleSubmit={handleSubmit} />
+    <Form initialData={$user_data.data.fetchUser} handleSubmit={handleSubmit} />
   {/if}
 </div>
 

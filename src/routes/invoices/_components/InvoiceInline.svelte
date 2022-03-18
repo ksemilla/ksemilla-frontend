@@ -1,4 +1,5 @@
 <script>
+  import dayjs from "dayjs"
   export let invoice;
 
   const monthMap = {
@@ -21,22 +22,20 @@
   let prettyDate;
 
   if (invoice) {
-    let [year, month, day] = invoice.DateCreated.split("-", 3)
+   let month = parseInt(dayjs(invoice.dateCreated).format("M"))
 
-    invoiceYear = year
-    prettyDate = `${monthMap[month]} ${day}, ${year}`
-
-   let month_int = parseInt(month)
-
-    if (month_int <= 3) {
+    if (month <= 3) {
       tag = "Q1"
-    } else if (month_int <= 6) {
+    } else if (month <= 6) {
       tag = "Q2"
-    } else if (month_int <= 9) {
+    } else if (month <= 9) {
       tag = "Q3"
-    } else if (month_int <= 12) {
+    } else if (month <= 12) {
       tag = "Q4"
     }
+
+    prettyDate = dayjs(invoice.dateCreated).format("MMM DD, YYYY")
+    invoiceYear = dayjs(invoice.dateCreated).format("YYYY")
   }
 
 </script>
@@ -50,8 +49,8 @@
       </div>
     </div>
     <div class="grid grid-cols-12">
-      <div class="col-span-10">{invoice.From}</div>
-      <div class="col-span-2 text-right">&#8369; {invoice.Amount}</div>
+      <div class="col-span-10">{invoice.from}</div>
+      <div class="col-span-2 text-right">&#8369; {invoice.amount}</div>
     </div>
   </div>
 </a>

@@ -1,4 +1,5 @@
 <script>
+  import { OWNER, ACCT } from "$lib/config/const"
   export let initialData = {};
   export let handleSubmit;
   let data = {}
@@ -32,8 +33,8 @@
     <select
       bind:value={data.role}
     >
-      <option value="acct">Acct</option>
-      <option value="owner">Owner</option>
+      <option value={ACCT}>Acct</option>
+      <option value={OWNER}>Owner</option>
     </select>
   </div>
   <button type="submit">Save</button>

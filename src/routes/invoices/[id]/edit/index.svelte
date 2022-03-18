@@ -9,10 +9,10 @@
     query singleInvoice($id: String!) {
       getInvoice(id: $id) {
         id
-        From
-        DateCreated
-        Address
-        Amount
+        from
+        dateCreated
+        address
+        amount
       }
     }`,
     { id: $page.params.id },
@@ -23,13 +23,13 @@
 
   const mutateInvoice = mutation({
     query: `
-    mutation updateInvoice($id: String!, $DateCreated: String!, $From: String!, $Address: String!, $Amount: Float!) {
-      updateInvoice(input: {id: $id, DateCreated: $DateCreated, From: $From, Address: $Address, Amount: $Amount }) {
+    mutation updateInvoice($id: String!, $dateCreated: Int!, $from: String!, $address: String!, $amount: Float!) {
+      updateInvoice(input: {id: $id, DateCreated: $dateCreated, From: $from, Address: $address, Amount: $amount }) {
         id
-        DateCreated
-        From
-        Address
-        Amount
+        dateCreated
+        from
+        address
+        amount
       }
     }
     `
@@ -39,7 +39,6 @@
     mutateInvoice({ ...data })
     .then(res=>{
       if (res.data) {
-        console.log(res.data)
         goto(`/invoices/${res.data.updateInvoice.id}`)
       } else {
         console.log(res.error)

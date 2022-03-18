@@ -1,11 +1,12 @@
 <script>
+  import { OWNER } from "$lib/config/const"
   import { user } from '$lib/stores/auth'
   import { operationStore, query } from '@urql/svelte'
   import UserInline from './_components/UserInline.svelte';
 
   const users_data = operationStore(`
     query users {
-      users {
+      getUsers {
         id
         email
         role
@@ -15,7 +16,7 @@
   );
 
   function rawDataToUsers(users) {
-    return users.data.users
+    return users.data.getUsers
   }
 
   $: users = $users_data.data ? rawDataToUsers($users_data) : []
@@ -35,7 +36,7 @@
 <div class="max-w-3xl m-auto my-8">
   <div class="flex items-center justify-between">
     <h1 class="text-3xl font-medium text-blue-500 mb-4">Users</h1>
-    {#if $user.role === "owner"}
+    {#if $user.role === OWNER}
       <a href={`/users/add`} class="text-blue-500">
         Add
       </a>

@@ -4,6 +4,7 @@
   import { user } from "$lib/stores/auth"
   import { page } from "$app/stores"
   import Modal from "$lib/modal/index.svelte"
+  import { OWNER } from "$lib/config/const"
 
   let show = false
   const setShow = val => {
@@ -12,7 +13,7 @@
 
   const user_data = operationStore(`
     query getUser($id: String!) {
-      getUser(id: $id) {
+      fetchUser(id: $id) {
         id
         email
         role
@@ -54,7 +55,7 @@
     <a href={`/users`}>
       <h1 class="text-blue-500 text-3xl">Users</h1>
     </a>
-    {#if $user.role === "owner"}
+    {#if $user.role === OWNER}
       <div class="flex gap-x-4">
         <a href={`/users/${$page.params.id}/edit`}>Edit</a>
         <a href={`/users/${$page.params.id}/change-password`}>Change Password</a>
@@ -74,9 +75,9 @@
     <div class="user-container">
       <div>
         <div class="data-container">
-          <div>ID: {$user_data.data.getUser.id}</div>
-          <div>Email: {$user_data.data.getUser.email}</div>
-          <div>Role: {$user_data.data.getUser.role}</div>
+          <div>ID: {$user_data.data.fetchUser.id}</div>
+          <div>Email: {$user_data.data.fetchUser.email}</div>
+          <div>Role: {$user_data.data.fetchUser.role}</div>
         </div>
       </div>
     </div>

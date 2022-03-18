@@ -15,13 +15,13 @@
 
   const invoices_data = operationStore(`
     query paginatedInvoice($page: Int!) {
-      invoices(Page: $page) {
+      getInvoices(page: $page) {
         data {
           id
-          From
-          DateCreated
-          Address
-          Amount
+          from
+          dateCreated
+          address
+          amount
         }
         total
       }
@@ -31,11 +31,11 @@
   );
 
   function rawDataToInvoices(invoices) {
-    return invoices.data.invoices.data
+    return invoices.data.getInvoices.data
   }
 
   $: invoices = $invoices_data.data ? rawDataToInvoices($invoices_data) : []
-  $: total = $invoices_data.data ? $invoices_data.data.invoices.total : 0
+  $: total = $invoices_data.data ? $invoices_data.data.getInvoices.total : 0
 
   query(invoices_data)
 
@@ -53,7 +53,7 @@
 <div class="max-w-3xl m-auto my-8">
   <div class="flex items-center justify-between">
     <h1 class="text-3xl font-medium text-blue-500 mb-4">Invoices</h1>
-    {#if $user.role === "owner"}
+    {#if $user.role === "OWNER"}
       <a href={`/invoices/add`} class="text-blue-500">
         Add
       </a>

@@ -1,17 +1,21 @@
 <script>
+  import dayjs from "dayjs"
   export let initialData = {};
   export let handleSubmit;
   let data = {}
 
+  const initializeData = () => {
+    data = {...initialData, dateCreated: dayjs(initialData.dateCreated).format("YYYY-MM-DD")}
+  }
+
   $: {
     if (initialData) {
-      data = initialData
+      initializeData()
     }
-    
   }
 
   const onSubmit = () => {
-    handleSubmit({...data})
+    handleSubmit({...data, dateCreated: dayjs(data.dateCreated).valueOf()})
   }
 
 </script>
@@ -23,7 +27,7 @@
       type="text"
       id="from"
       name="from"
-      bind:value={data.From}
+      bind:value={data.from}
       required
     />
   </div>
@@ -33,7 +37,7 @@
       type="text"
       id="address"
       name="address"
-      bind:value={data.Address}
+      bind:value={data.address}
       required
     />
   </div>
@@ -43,7 +47,7 @@
       type="date"
       id="date"
       name="date"
-      bind:value={data.DateCreated}
+      bind:value={data.dateCreated}
       required
     />
   </div>
@@ -55,7 +59,7 @@
       name="amount"
       min={0}
       step="0.01"
-      bind:value={data.Amount}
+      bind:value={data.amount}
       required
     />
   </div>
