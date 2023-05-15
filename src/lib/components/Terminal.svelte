@@ -160,7 +160,7 @@ Stack: Reactjs, Django, REST, Postgres
 			} else {
 				switch (action) {
 					case 'exit':
-						useTerminal.set(false);
+						// useTerminal.set(false);
 						message = '';
 						break;
 					case 'help':
