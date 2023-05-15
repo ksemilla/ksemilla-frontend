@@ -17,9 +17,3 @@
 		<slot />
 	</main>
 </div>
-
-<!-- HXPJO -->
-<style>
-	.app {
-	}
-</style>
