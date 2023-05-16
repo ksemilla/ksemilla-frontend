@@ -42,12 +42,13 @@
 			{ type: 'txt', name: 'PBI' }
 		],
 		'~/Projects/': [
+			{ type: 'txt', name: 'Intervengine' },
+			{ type: 'txt', name: 'Hello-Contractors' },
 			{ type: 'txt', name: 'Bunotan' },
 			{ type: 'txt', name: 'Adobo' },
 			{ type: 'txt', name: 'Phtore' },
 			{ type: 'txt', name: 'ksemilla' },
 			{ type: 'txt', name: 'ERP' },
-			{ type: 'txt', name: 'Hello-Contractors' },
 			{ type: 'txt', name: 'Mamala' },
 			{ type: 'txt', name: 'Aqams' }
 		],
@@ -115,7 +116,7 @@ Stack: Reactjs, Typescript, Fastapi, GraphQL, MongoDB
 Stack: Svelte, Typescript, Go Chi, GraphQL, MongoDB
 `,
 		ERP: `Description: Cloud-based solution for enterprise resource planning (ERP) 
-Stack: Reactjs, Typescript, Django, REST, Postgres
+Stack: Reactjs, Django, REST, Postgres
 `,
 		'Hello-Contractors': `Description: Web application for a client in New Zealand for job posting 
 Stack: Nextjs, Django, REST, Algolia, Postgres
@@ -125,6 +126,9 @@ Stack: Reactjs, Django, REST, Postgres
 `,
 		Aqams: `Description: Quotation app 
 Stack: Reactjs, Django, REST, Postgres
+`,
+		Intervengine: `Description: Health management system. I am designated in frontend for this project for a client in New Zealand
+Stack: Reactjs, React-admin, Typescript
 `
 	};
 
@@ -160,7 +164,7 @@ Stack: Reactjs, Django, REST, Postgres
 			} else {
 				switch (action) {
 					case 'exit':
-						// useTerminal.set(false);
+						useTerminal.set(false);
 						message = '';
 						break;
 					case 'help':
