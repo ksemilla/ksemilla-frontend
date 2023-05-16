@@ -374,7 +374,7 @@ Stack: Reactjs, React-admin, Typescript
 		<span>:</span>
 		<span class="dir">{dir}</span>
 		<span>$&nbsp;</span>
-		<span>
+		<span style="flex:1">
 			<input
 				bind:this={inputElement}
 				on:keydown={handleEnterKey}
