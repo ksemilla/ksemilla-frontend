@@ -1,5 +1,14 @@
-<script>
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { useTerminal } from '$lib/stores';
 	import './style.css';
+
+	onMount(() => {
+		const mediaQuery: MediaQueryList = window.matchMedia('(max-width: 768px)');
+		if (mediaQuery.matches) {
+			useTerminal.set(false);
+		}
+	});
 </script>
 
 <svelte:head>
