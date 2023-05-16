@@ -1,7 +1,3 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
 	const experiences = [
 		{
@@ -42,9 +38,9 @@
 	];
 </script>
 
-<section class="max-w-5xl m-auto p-8">
-	<h1 class="text-3xl font-medium text-blue-600 mb-4 text-center">Experience</h1>
-	<div class="grid grid-cols-1 divide-y divide-gray-500 space-y-6 text-primary">
+<section>
+	<h1>Experience</h1>
+	<div>
 		{#each experiences as experience}
 			<div class="group">
 				<h2 class="company">{experience.company}</h2>
@@ -58,7 +54,9 @@
 
 <style>
 	section {
-		padding: 40px 80px;
+		padding: 20px 0px;
+		max-width: 700px;
+		margin: auto;
 	}
 	h1 {
 		font-size: xx-large;
