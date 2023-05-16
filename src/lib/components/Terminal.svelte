@@ -37,7 +37,7 @@
 		'~/Experience/': [
 			{ type: 'txt', name: 'Exploration' },
 			{ type: 'txt', name: 'ExecOS' },
-			{ type: 'txt', name: 'Convoluted Technologies' },
+			{ type: 'txt', name: 'Convoluted-Technologies' },
 			{ type: 'txt', name: 'Concepcion-Carrier' },
 			{ type: 'txt', name: 'PBI' }
 		],
@@ -88,7 +88,7 @@ Duration: January 202 - May 2021
 Address: TENNESSEE, USA (Remote)
 Description: Built a payment gateway for a startup company using Stripe. Developed the web app as a full stack for business management using React and Django primarily. Researched and created a retirement plan through the efforts of cryptocurrency
 `,
-		'Convoluted Technologies': `Title: Mechanical Engineer
+		'Convoluted-Technologies': `Title: Mechanical Engineer
 Duration: February 2018 - April 2019
 Address: SYDNEY, AUSTRALIA
 Description: Provide technical support for customers and the sales team. Maintain and oversee production to deliver client needs on time. Lead restorations of critical safety equipment to minimize customer production downtime.
