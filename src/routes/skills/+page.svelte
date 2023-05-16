@@ -100,9 +100,21 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 		grid-gap: 30px;
+		padding: 0;
 	}
 	li {
 		list-style: none;
 		text-align: center;
+	}
+
+	@media (max-width: 798px) {
+		ul {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+	@media (max-width: 468px) {
+		ul {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
 	}
 </style>

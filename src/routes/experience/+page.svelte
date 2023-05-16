@@ -83,4 +83,10 @@
 		margin: 5px 0px;
 		padding: 0;
 	}
+
+	@media (max-width: 798px) {
+		section {
+			padding: 20px 30px;
+		}
+	}
 </style>

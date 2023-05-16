@@ -53,7 +53,7 @@
 	];
 </script>
 
-<main>
+<section>
 	<h1>Projects</h1>
 	<div>
 		{#each projects as project}
@@ -67,10 +67,10 @@
 			</div>
 		{/each}
 	</div>
-</main>
+</section>
 
 <style>
-	main {
+	section {
 		max-width: 700px;
 		margin: auto;
 		margin-top: 40px;
@@ -94,5 +94,10 @@
 	h4 {
 		padding: 0;
 		margin: 0;
+	}
+	@media (max-width: 798px) {
+		section {
+			padding: 20px 30px;
+		}
 	}
 </style>
