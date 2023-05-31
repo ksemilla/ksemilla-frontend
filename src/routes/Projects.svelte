@@ -13,7 +13,7 @@
 				</div>
 				<div class="container">
 					{#if project.thumbnail}
-						<img src={`src/lib/images/${project.thumbnail}`} alt="project-img" />
+						<img src={`./${project.thumbnail}`} alt="project-img" />
 					{/if}
 				</div>
 			</a>
