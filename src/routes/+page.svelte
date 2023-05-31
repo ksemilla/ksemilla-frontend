@@ -100,7 +100,7 @@
 	@media (max-width: 1024px) {
 		main {
 			display: block;
-			padding: 20px 20px;
+			padding: 0px 20px;
 		}
 		.static {
 			position: static;
