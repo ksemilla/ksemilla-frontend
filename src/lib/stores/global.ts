@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const useTerminal = writable(true);
+export const useTerminal = writable(false);

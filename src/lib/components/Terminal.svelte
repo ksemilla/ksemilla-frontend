@@ -387,6 +387,9 @@ Stack: Reactjs, React-admin, Typescript
 </div>
 
 <style>
+	input {
+		cursor: default;
+	}
 	.terminal {
 		background-color: #002b36;
 		position: absolute;

@@ -1,103 +1,138 @@
 <script>
-	const projects = [
-		{
-			title: 'Intervengine',
-			description:
-				'Health management system. I am designated in frontend for this project for a client in New Zealand',
-			stackList: ['Reactjs', 'React-admin', 'Typescript']
-		},
-		{
-			title: 'Hello Contractors',
-			description: 'Web application for a client in New Zealand for job posting',
-			stackList: ['Nextjs', 'Django', 'REST', 'Algolia', 'Postgres']
-		},
-		{
-			title: 'Bunotan',
-			description: 'A white elephant exchange gift application',
-			stackList: ['Nextjs', 'Typescript', 'Nestjs', 'REST', 'Postgres']
-		},
-		{
-			title: 'Adobo',
-			description: 'Application management with a form builder',
-			stackList: ['Reactjs', 'Typescript', 'Fastapi', 'REST', 'MongoDB']
-		},
-		{
-			title: 'Phtore',
-			description:
-				'Ecommerce app where vendors can track their sales and export relevant details for their tax information details.',
-			stackList: ['Reactjs', 'Typescript', 'GraphQL', 'Fastapi', 'MongoDB']
-		},
-		{
-			title: 'ksemilla',
-			description:
-				'This site. I created a simple CRUD system for my income tax information neede by my accountant. Backend temporarily unavailable.',
-			stackList: ['Svelte', 'Typescript', 'Go Chi', 'GraphQL', 'MongoDB']
-		},
-		{
-			title: 'ERP',
-			description:
-				'Cloud-based solution for enterprise resource planning (ERP). I wanted to create the app my previous company is using and implement the features I know that will make it a better erp.',
-			stackList: ['Reactjs', 'Django', 'REST', 'Postgres']
-		},
-
-		{
-			title: 'Mamala',
-			description: 'Intially intended to propose for a company to manage their orders',
-			stackList: ['React', 'Django', 'REST', 'Postgres']
-		},
-		{
-			title: 'Aqams',
-			description: 'An app for creating quotations',
-			stackList: ['React', 'Django', 'REST', 'Postgres']
-		}
-	];
+	import { projects } from '$lib/const';
 </script>
 
-<section>
-	<h1>Projects</h1>
-	<div>
-		{#each projects as project}
-			<div class="group">
-				<h2>{project.title}</h2>
-				<p>{project.description}</p>
-				<h4>
-					<span>Stack:</span>
-					{project.stackList.join(', ')}
-				</h4>
-			</div>
-		{/each}
-	</div>
-</section>
+<main>
+	<a href="/" class="back"><i class="fa fa-chevron-left" aria-hidden="true" />Kevin Semilla</a>
+	<h1 class="header">All Projects</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Project</th>
+				<th>Stack</th>
+				<th class="header-link">Links</th>
+			</tr>
+		</thead>
+		<tbody>
+			{#each projects as project}
+				<tr>
+					<td><span class="project-cell">{project.title}</span></td>
+					<td class="stack-cell">
+						{#each project.tags as tag}
+							<span class="tag">{tag}</span>
+						{/each}
+					</td>
+					<td class="link-cell">
+						{#if project.links.site}
+							<span>
+								<a href={project.links.site} target="_blank">{project.links.site_label}</a>
+							</span>
+						{/if}
+						{#if project.links.github_frontend}
+							<span>
+								<a href={project.links.github_frontend} target="_blank">
+									<i class="fa fa-github" aria-hidden="true" /> Frontend
+								</a>
+							</span>
+						{/if}
+						{#if project.links.github_backend}
+							<span>
+								<a href={project.links.github_backend} target="_blank">
+									<i class="fa fa-github" aria-hidden="true" /> Backend
+								</a>
+							</span>
+						{/if}
+					</td>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
+</main>
 
 <style>
-	section {
-		max-width: 700px;
+	main {
+		max-width: 1100px;
 		margin: auto;
-		margin-top: 40px;
+		padding: 100px 80px;
 	}
-	h1 {
-		font-size: xx-large;
+	.back {
+		display: block;
+		text-decoration: none;
+		color: rgb(94, 234, 212);
+		margin: 10px 0px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
 	}
-	.group {
-		padding: 15px 0px;
-	}
-	h2 {
-		margin: 0;
-		padding: 0;
-		color: #c4a000;
-		font-weight: 300;
-	}
-	p {
-		margin: 5px 0px;
-		padding: 0;
-	}
-	h4 {
-		padding: 0;
+	.header {
 		margin: 0;
 	}
-	@media (max-width: 798px) {
-		section {
-			padding: 20px 30px;
+	table {
+		margin-top: 30px;
+		border-collapse: collapse;
+		border-spacing: 20px;
+	}
+
+	thead > tr > th {
+		font-weight: 500;
+		position: sticky;
+		top: 0;
+		font-size: 0.85rem;
+		padding: 0px 40px 20px 0px;
+		text-align: left;
+	}
+	tbody > tr {
+		border-top: 1px solid rgba(131, 148, 150, 0.1);
+	}
+	tbody > tr > td {
+		padding: 20px 0px;
+		padding-right: 40px;
+	}
+	.project-cell {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: rgb(196, 196, 196);
+	}
+	.stack-cell {
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+	}
+	.link-cell {
+		white-space: nowrap;
+	}
+	.tag {
+		color: rgb(94, 234, 212);
+		background-color: rgba(45, 212, 191, 0.1);
+		font-weight: 500;
+		line-height: 1.25rem;
+		font-size: 0.7rem;
+		padding: 0.25rem 0.75rem;
+		border-radius: 9999px;
+	}
+	a {
+		text-decoration: none;
+		color: #839496;
+	}
+	a:hover {
+		color: rgb(94, 234, 212);
+	}
+	@media (max-width: 1024px) {
+		main {
+			display: block;
+			padding: 20px 20px;
+		}
+	}
+	@media (max-width: 768px) {
+		main {
+			display: block;
+			padding: 20px 20px;
+		}
+		.link-cell {
+			display: none;
+		}
+		.header-link {
+			display: none;
 		}
 	}
 </style>

@@ -1,65 +1,120 @@
-<script>
-	import Terminal from '$lib/components/Terminal.svelte';
+<script lang="ts">
+	import { onMount } from 'svelte';
 	import { useTerminal } from '$lib/stores';
-	import LinkedinSVG from '$lib/svg/linkedin.svelte';
-	import GmailSVG from '$lib/svg/gmail.svelte';
-	import GithubSVG from '$lib/svg/github.svelte';
+	import Terminal from '$lib/components/Terminal.svelte';
+
+	import Skills from './Skills.svelte';
+	import Projects from './Projects.svelte';
+	import Experience from './Experience.svelte';
+	import Title from './Title.svelte';
+	import Blurb from './Blurb.svelte';
+	import Nav from './Nav.svelte';
+	import Socials from './Socials.svelte';
+	import About from './About.svelte';
+
+	let scrollPosition: number = 0;
+
+	onMount(() => {
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
+
+	function handleScroll() {
+		scrollPosition = window.pageYOffset;
+	}
+
+	const handleUseTerminal = () => {
+		useTerminal.set(true);
+	};
 </script>
 
-<main>
-	{#if $useTerminal}
-		<Terminal />
-	{:else}
-		<section>
-			<h1>Kevin Semilla</h1>
-			<h2>Software Engineer</h2>
-			<div style="color:#06989a">
-				<a href="/experience">experience</a> - <a href="/skills">skills</a> -
-				<a href="/projects">projects</a>
+{#if $useTerminal}
+	<Terminal />
+{:else}
+	<main>
+		<div class="static">
+			<div>
+				<div>
+					<Title />
+					<div class="blurb">
+						<Blurb />
+					</div>
+					<Nav />
+				</div>
+				<Socials />
 			</div>
-			<div class="links">
-				<a href="https://www.linkedin.com/in/ksemilla/" target="_blank"
-					><svelte:component this={LinkedinSVG} /></a
-				>
-				<a href="mailto:kevinsemilla@gmail.com"><svelte:component this={GmailSVG} /></a>
-				<a href="https://github.com/ksemilla" target="_blank"
-					><svelte:component this={GithubSVG} /></a
-				>
-			</div>
-		</section>
-	{/if}
-</main>
+		</div>
+		<div class="scroll">
+			<section id="about"><About /></section>
+			<section id="experience"><Experience /></section>
+			<section id="projects"><Projects /></section>
+			<section id="skills"><Skills /></section>
+			<section style="height:500px;text-align:center;background-color:#002b36">
+				<button on:click|preventDefault={handleUseTerminal}>Prefer using a terminal?</button>
+			</section>
+		</div>
+	</main>
+{/if}
 
 <style>
-	section {
-		text-align: center;
-		padding-top: 8rem;
-	}
-	h1 {
-		font-weight: 200;
-		padding: 0;
-		margin: 0;
-		font-size: xx-large;
-	}
-	h2 {
-		color: #635551;
-		font-weight: 200;
-		padding: 0;
-		margin: 0;
-	}
-	a {
-		color: #06989a;
-		text-decoration: none;
-	}
-
-	a:hover {
-		color: #0cd5d9;
-	}
-
-	.links {
-		margin-top: 15px;
+	main {
 		display: flex;
-		justify-content: center;
-		column-gap: 20px;
+		max-width: 1100px;
+		margin: auto;
+		padding: 0px 80px;
+	}
+	.static {
+		flex: 1;
+		position: relative;
+	}
+	.static > div {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		padding: 100px 0px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.scroll > * {
+		padding-top: 100px;
+	}
+	.scroll {
+		flex: 1;
+	}
+	.blurb {
+		margin: 50px 0px 100px 0px;
+	}
+	button {
+		border: none;
+		background-color: transparent;
+		color: #839496;
+		cursor: pointer;
+	}
+	button:hover {
+		color: rgb(94, 234, 212);
+	}
+	@media (max-width: 1024px) {
+		main {
+			display: block;
+			padding: 20px 20px;
+		}
+		.static {
+			position: static;
+		}
+		.static > div {
+			position: inherit;
+			padding: 60px 0px 80px 0px;
+			display: block;
+		}
+		.blurb {
+			margin: 25px 0px;
+		}
+		.scroll > section:first-child {
+			padding-top: 0px;
+		}
 	}
 </style>

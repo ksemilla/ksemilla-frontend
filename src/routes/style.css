@@ -1,6 +1,23 @@
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	background-color: #002b36;
 	margin: 0;
 	font-family: 'Fira Mono', monospace;
 	color: #839496;
+	scroll-behavior: smooth;
+}
+
+.section-header {
+	font-weight: 500;
+	font-size: 0.9rem;
+	color: rgb(195, 237, 230);
+}
+
+@media (min-width: 1024px) {
+	.section-header {
+		display: none;
+	}
 }
