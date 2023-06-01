@@ -35,9 +35,7 @@
 	{/each}
 </ul>
 <div class="resume-container">
-	<a href="./resume.pdf" class="resume"
-		>View full resume <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:15px" /></a
-	>
+	<a href="./resume.pdf" class="resume">View full resume <i class="fa-solid fa-arrow-right" /></a>
 </div>
 
 <style>
@@ -67,6 +65,11 @@
 		border-radius: 0.375rem;
 		filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
 		color: rgb(127, 144, 146);
+	}
+	a:hover > i {
+		transform: translateX(5px);
+		transition: all;
+		transition-duration: 0.1s;
 	}
 	.header {
 		flex: 1;

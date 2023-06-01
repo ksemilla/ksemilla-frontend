@@ -1,12 +1,12 @@
 <div class="footer-nav">
 	<a href="https://github.com/ksemilla" target="_blank"
-		><i class="fa fa-github icon" aria-hidden="true" style="font-size:1.7rem" /></a
+		><i class="fa-brands fa-github icon" aria-hidden="true" style="font-size:1.7rem" /></a
 	>
 	<a href="https://www.linkedin.com/in/ksemilla/" target="_blank"
-		><i class="fa fa-linkedin-square icon" aria-hidden="true" style="font-size:1.6rem" /></a
+		><i class="fa-brands fa-linkedin icon" style="font-size:1.7rem" /></a
 	>
-	<a href="mailto:kevinsemilla@gmail.com"
-		><i class="fa fa-envelope icon" aria-hidden="true" style="font-size:1.6rem" /></a
+	<a href="mailto:kevinsemilla@gmail.com">
+		<i class="fa-regular fa-envelope icon" style="font-size:1.7rem" /></a
 	>
 </div>
 

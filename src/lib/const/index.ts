@@ -32,7 +32,7 @@ export const projects = [
 	{
 		title: 'Hello Contractors',
 		description:
-			'A web application for job posting and listing of service providers/contractors who wants to be able to remotely work. I made the Figma design from a UI/UX designer come to life.',
+			'A web application for job posting and listing of service providers and contractors who wants to be able to remotely work. I made the Figma design from a UI/UX designer come to life.',
 		tags: ['React', 'Nextjs', 'Algolia', 'Tailwind', 'Django', 'Postgres', 'AWS', 'Stripe'],
 		links: {
 			status: 'done',

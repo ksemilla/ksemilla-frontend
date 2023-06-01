@@ -21,9 +21,7 @@
 	{/each}
 </ul>
 <div class="resume-container">
-	<a href="/projects" class="resume"
-		><i class="fa fa-chevron-right" aria-hidden="true" style="font-size:15px" />View all projects
-	</a>
+	<a href="/projects" class="resume"><i class="fa-solid fa-arrow-right" />View all projects </a>
 </div>
 
 <style>
@@ -57,7 +55,11 @@
 		filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
 		color: rgb(127, 144, 146);
 	}
-
+	a:hover > i {
+		transform: translateX(5px);
+		transition: all;
+		transition-duration: 0.1s;
+	}
 	.container {
 		width: 140px;
 	}

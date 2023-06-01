@@ -3,7 +3,11 @@
 </script>
 
 <main>
-	<a href="/" class="back"><i class="fa fa-chevron-left" aria-hidden="true" />Kevin Semilla</a>
+	<div style="display:inline-block">
+		<a class="back" href="/"><i class="fa-solid fa-arrow-left" aria-hidden="true" />Kevin Semilla</a
+		>
+	</div>
+
 	<h1 class="header">All Projects</h1>
 	<table>
 		<thead>
@@ -25,19 +29,21 @@
 					<td class="link-cell">
 						{#if project.links.site}
 							<span>
-								<a href={project.links.site} target="_blank">{project.links.site_label}</a>
+								<a class="links" href={project.links.site} target="_blank"
+									>{project.links.site_label}</a
+								>
 							</span>
 						{/if}
 						{#if project.links.github_frontend}
 							<span>
-								<a href={project.links.github_frontend} target="_blank">
+								<a class="links" href={project.links.github_frontend} target="_blank">
 									<i class="fa fa-github" aria-hidden="true" /> Frontend
 								</a>
 							</span>
 						{/if}
 						{#if project.links.github_backend}
 							<span>
-								<a href={project.links.github_backend} target="_blank">
+								<a class="links" href={project.links.github_backend} target="_blank">
 									<i class="fa fa-github" aria-hidden="true" /> Backend
 								</a>
 							</span>
@@ -55,14 +61,25 @@
 		margin: auto;
 		padding: 100px 80px;
 	}
+
 	.back {
-		display: block;
-		text-decoration: none;
+		display: inline-block;
+		text-decoration: none !important;
 		color: rgb(94, 234, 212);
 		margin: 10px 0px;
 		display: flex;
 		align-items: center;
 		gap: 10px;
+	}
+	.back:hover {
+		cursor: pointer;
+		border-radius: 0.375rem;
+		filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+	}
+	.back:hover > i {
+		transform: translateX(-5px);
+		transition: all;
+		transition-duration: 0.1s;
 	}
 	.header {
 		margin: 0;
@@ -110,11 +127,11 @@
 		padding: 0.25rem 0.75rem;
 		border-radius: 9999px;
 	}
-	a {
+	.links {
 		text-decoration: none;
 		color: #839496;
 	}
-	a:hover {
+	.links:hover {
 		color: rgb(94, 234, 212);
 	}
 	@media (max-width: 1024px) {
