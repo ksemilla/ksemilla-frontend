@@ -59,6 +59,9 @@
 		color: #839496;
 		margin: -1rem;
 		padding: 1rem;
+		transition-property: all;
+		transition: cubic-bezier(0.4, 0, 0.2, 1);
+		transition: 0.2s;
 	}
 	a:hover {
 		background-color: rgba(148, 163, 184, 0.1);
