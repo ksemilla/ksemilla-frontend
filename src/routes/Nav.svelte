@@ -88,11 +88,11 @@
 
 	$: {
 		if (!isScrolling && isScrolling !== null) {
-			if (scrollPosition > 1475) {
+			if (scrollPosition > 1400) {
 				handleClick(3);
-			} else if (scrollPosition > 1100) {
+			} else if (scrollPosition > 950) {
 				handleClick(2);
-			} else if (scrollPosition > 260) {
+			} else if (scrollPosition > 250) {
 				handleClick(1);
 			} else {
 				handleClick(0);
