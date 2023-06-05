@@ -53,7 +53,7 @@
 
 	a {
 		display: flex;
-		gap: 20px;
+		gap: 10px;
 		border-radius: 5px;
 		text-decoration: none;
 		color: #839496;
@@ -88,6 +88,7 @@
 		font-size: 12px;
 		padding: 0;
 		margin-top: 2px;
+		width: 160px;
 	}
 	.title-container {
 		display: flex;
