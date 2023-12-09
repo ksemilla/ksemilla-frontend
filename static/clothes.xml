@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- XML demonstration -->
+
+<?xml-stylesheet type="text/css" href="style_clothes.css"?>
+
+<!DOCTYPE product [
+    <!ELEMENT product (clothes+)>
+    <!ELEMENT clothes (name, price, description, gif)>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT description (#PCDATA)>
+    <!ELEMENT gif (#PCDATA)>
+]>
+
+<produc>
+    <clothes>
+        <name>Shift Dress</name>
+        <price>$45.00</price>
+        <description>Simple shift, available in two colours, 100% cotton</description>
+        <gif>https://...</gif>
+    </clothes>
+
+    <clothes>
+        <name>Wraparound skirt</name>
+        <price>$30.00</price>
+        <description>Simple wraparound skirt, available in two colours, 100% cotton</description>
+        <gif>https://...</gif>
+    </clothes>
+
+    <clothes>
+        <name>Cardigan</name>
+        <price>$70.00</price>
+        <description>Winter cardigan, available in two colours, 100% wool</description>
+        <gif>https:/...</gif>
+    </clothes>
+
+    <clothes>
+        <name>Dress hat</name>
+        <price>$20.00</price>
+        <description>Stylish dress hat, available in two colours, 100% linen</description>
+        <gif>https://...</gif>
+    </clothes>
+</product>
