@@ -1,17 +1,18 @@
 /*** XML demonstration ***/
 
-bread:before {
+product:before {
     display: block;
     width: 8em;
     font-weight: bold;
     font-size: 200%;
-    content: "Bread";
+    content: "Clothes";
     margin: -.75em 0px .25em -.25em;
     padding: .1em .25em;
-    background-color: #cdf;
+    background-color: rgb(143, 16, 105);
+    color: white;
     }
   
-  bread {
+  product {
     display: block;
     margin: 2em 1em;
     border: 4px solid rgb(143, 16, 105);
@@ -19,7 +20,7 @@ bread:before {
     background-color: white;
     }
   
-  sourdough {
+  clothes {
     display: block;
     margin-bottom: 1em;
     }
@@ -37,7 +38,6 @@ bread:before {
   price:before {
     content: "Price: ";
     }
-  
   
   description {
     display: block;
