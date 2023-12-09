@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- XML demonstration -->
+
+<?xml-stylesheet type="text/css" href="style_sourdough.css"?>
+
+<!DOCTYPE bread [
+    <!ELEMENT bread (sourdough+)>
+    <!ELEMENT sourdough (name, price, description, gif)>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT description (#PCDATA)>
+    <!ELEMENT gif (#PCDATA)>
+]>
+
+<bread>
+    <sourdough>
+        <name>Sourdough White</name>
+        <price>$7.00</price>
+        <description>Our standard sourdough</description>
+        <gif>https://i0.wp.com/www.thespiffycookie.com/wp-content/uploads/2020/03/Sourdough-Rolls-GIF.gif</gif>
+    </sourdough>
+
+    <sourdough>
+        <name>Sourdough Rye</name>
+        <price>$8.00</price>
+        <description>Sourdough created with 50% rye flour</description>
+        <gif>https://i.imgur.com/69k6pZY.gif</gif>
+    </sourdough>
+
+    <sourdough>
+        <name>Sourdough Spelt</name>
+        <price>$9.00</price>
+        <description>Sourdough created with 100% spelt flour</description>
+        <gif>https://www.inthemoodforfood.fr/wp-content/uploads/2017/05/Pain-de-Mie-Levain.gif</gif>
+    </sourdough>
+
+    <sourdough>
+        <name>Sourdough Seeded</name>
+        <price>$9.50</price>
+        <description>Sourdough including a mixture of yummy seeds</description>
+        <gif>https://i0.wp.com/thenextrushmagazine.com/wp-content/uploads/2020/05/chef-sourdough-baked2.gif?resize=282%2C287</gif>
+    </sourdough>
+</bread>
